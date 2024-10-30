@@ -1,0 +1,20 @@
+[project]
+name = "chatbot_telecomunicacao"
+version = "0.1.0"
+description = "ChatBot_Telecomunicacao using crewAI"
+authors = [{ name = "João Pedro Kuhn", email = "pedrojoaojpk@gmail.com" }]
+requires-python = ">=3.10,<=3.13"
+dependencies = [
+    "crewai[tools]>=0.76.2,<1.0.0"
+]
+
+[project.scripts]
+chatbot_telecomunicacao = "chatbot_telecomunicacao.main:run"
+run_crew = "chatbot_telecomunicacao.main:run"
+train = "chatbot_telecomunicacao.main:train"
+replay = "chatbot_telecomunicacao.main:replay"
+test = "chatbot_telecomunicacao.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
