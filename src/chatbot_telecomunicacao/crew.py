@@ -77,12 +77,14 @@ class ChatbotTelecomunicacaoCrew():
 	def identificacao(self) -> Task:
 		return Task(
 			config=self.tasks_config['identificacao'],
+   			expected_output="Passar o problema para o agente responsável pela área ",
 		)
 
 	@task
 	def solucao_juridica(self) -> Task:
 		return Task(
 			config=self.tasks_config['solucao_juridica'],
+			expected_output="Caso o problema seja de sua área, envie esse documento para o Supervisor de artigos",
 			output_file='report.md'
 		)
   
@@ -90,6 +92,7 @@ class ChatbotTelecomunicacaoCrew():
 	def solucao_tecnica(self) -> Task:
 		return Task(
 			config=self.tasks_config['solucao_tecnica'],
+			expected_output="Caso o problema seja de sua área, envie esse documento para o Supervisor de artigos",
 			output_file='report.md'
 		)
   
@@ -97,6 +100,8 @@ class ChatbotTelecomunicacaoCrew():
 	def supervisar(self) -> Task:
 		return Task(
 			config=self.tasks_config['supervisar'],
+   			expected_output="Um documento com soluções bem escrito, em português do Brasil, "
+            "com cada seção contendo 3 ou 4 parágrafos. Ao final, as referências utilizadas no documento.",
 			output_file='report.md'
 		)
 
