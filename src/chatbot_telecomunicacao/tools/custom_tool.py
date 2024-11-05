@@ -1,13 +1,5 @@
 from crewai_tools import BaseTool
 from crewai_tools import PDFSearchTool, SerperDevTool
-
-class Get_API_Key(BaseTool):
-    name: str = "Get the API Key, the OpenAi or Serper"
-
-    def _run(self, argument: str) -> str:
-        with open(argument, "r") as file:
-            return file.read()
-        return file.read().strip()
     
 # Especificação de sites para raspagem
 class WebSite_Search(BaseTool):
