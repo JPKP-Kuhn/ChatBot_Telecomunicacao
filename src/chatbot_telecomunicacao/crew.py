@@ -5,19 +5,7 @@ from crewai_tools import tool, SerperDevTool, ScrapeWebsiteTool, WebsiteSearchTo
 from chatbot_telecomunicacao.tools.custom_tool import *
 from langchain_openai import ChatOpenAI
 
-# Uncomment the following line to use an example of a custom tool
-# from chatbot_telecomunicacao.tools.custom_tool import MyCustomTool
-
-# Check our tools documentations for more information on how to use them
-# from crewai_tools import SerperDevTool
-
-openai_api_key = Get_API_Key("../.env/OPENAI_API_KEY")
-serper_api_key = Get_API_Key("../.env/SERPER_API_KEY")
 pdf_search = Pdf_Search()
-os.environ["OPENAI_API_KEY"] = openai_api_key
-os.environ["SERPER_API_KEY"] = serper_api_key
-
-gpt4o_mini_llm = ChatOpenAI(model="gpt-4o-mini", api_key=openai_api_key)
 
 # Ferramenta para busca no google
 search_tool = SerperDevTool()
@@ -40,7 +28,7 @@ class ChatbotTelecomunicacaoCrew():
 			verbose=True,
 			tools=[search_tool, scrape_tool, docs_scrape_tool, pdf_search],
 			allow_delegation=False,
-			llm=gpt4o_mini_llm
+			#llm=gpt4o_mini_llm
 		)
 
 	@agent
@@ -50,7 +38,6 @@ class ChatbotTelecomunicacaoCrew():
 			verbose=True,
    			tools=[search_tool, scrape_tool, docs_scrape_tool, pdf_search],
 			allow_delegation=False,
-			llm=gpt4o_mini_llm
 		)
   
 	@agent
@@ -60,7 +47,6 @@ class ChatbotTelecomunicacaoCrew():
 			verbose=True,
 			tools=[search_tool, scrape_tool, docs_scrape_tool, pdf_search],
 			allow_delegation=False,
-			llm=gpt4o_mini_llm
 		)
   
 	@agent
@@ -70,7 +56,6 @@ class ChatbotTelecomunicacaoCrew():
 			verbose=True,
 			tools=[search_tool, scrape_tool, docs_scrape_tool, pdf_search],
 			allow_delegation=False,
-			llm=gpt4o_mini_llm
 		)
 
 	@task
