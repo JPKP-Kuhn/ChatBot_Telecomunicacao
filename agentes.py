@@ -33,6 +33,8 @@ docs_scrape_tool = ScrapeWebsiteTool(
 docs_search_tool = WebsiteSearchTool(website_url="https://www.gov.br/anatel/pt-br/consumidor/perguntas-frequentes")
 
 # Ferramenta para RAG em arquivos PDF. Específica para fazer buscas e extrair partes relevantes em arquivos PDF. 
+
+# Normas da Anatel
 pdf_search = PDFSearchTool(pdf="normas/Anatel - Manual Explicativo.pdf")
 pdf_search1 = PDFSearchTool(pdf="normas/Anatel - Resolução nº 426, de 9 de dezembro de 2005.pdf")
 pdf_search2 = PDFSearchTool(pdf="normas/Anatel - Resolução nº 477, de 7 de agosto de 2007.pdf")
@@ -40,6 +42,10 @@ pdf_search3 = PDFSearchTool(pdf="normas/Anatel - Resolução nº 488, de 3 de de
 pdf_search4 = PDFSearchTool(pdf="normas/Anatel - Resolução nº 581, de 26 de março de 2012.pdf")
 pdf_search5 = PDFSearchTool(pdf="normas/Anatel - Resolução nº 632, de 7 de março de 2014.pdf")
 
+# Datasheets
+datasheet_search = PDFSearchTool(pdf="datasheets/Datasheet_Impacta_16_Impacta_40_Impacta_68i_0.pdf")
+datasheet_search1 = PDFSearchTool(pdf="datasheets/Datasheet-AE-1028-01.20.pdf")
+datasheet_search2 = PDFSearchTool(pdf="datasheets/PABX_-_Configuracao-2.19-v.pdf")
 #Definição dos 4 agentes:
 identificador = Agent(
     role="Identificador de Problemas",
@@ -90,7 +96,7 @@ tecnico = Agent(
               "Envie esse texto resumido para o Supervisor de artigos"
               "Caso o problema não tenha nenhuma relação com telecomunicações ou com Anatel, retorne apenas um comentário dizendo que você não é capaz de resolver seu problema.",
     verbose=True,
-    tools=[pdf_search, pdf_search1, pdf_search2, pdf_search3, pdf_search4, pdf_search5, texto_search, docs_search_tool],
+    tools=[pdf_search, datasheet_search, datasheet_search1, datasheet_search2, texto_search, docs_search_tool],
     allow_delegation=False,
     llm=gpt4o_mini_llm
 )
